@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>بلديتي سيدي لخضر — التطبيق الذكي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #1565C0; --blue2: #1E88E5; --blue3: #42A5F5;
+      --gold: #FFD600; --gold2: #FFCA28;
+      --dark: #050A18; --card: #0A1128; --border: #1a2540;
+      --text: #E8EEF8; --muted: #7B93BC;
+    }
+    body { font-family: 'Cairo', sans-serif; background: var(--dark); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 40px; background: rgba(5,10,24,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 1.3rem; font-weight: 900; color: var(--gold); }
+    .nav-logo span { color: var(--text); }
+    .nav-badge { background: linear-gradient(135deg, var(--gold), #e6b800); color: #000; font-size: .72rem; font-weight: 800; padding: 5px 14px; border-radius: 20px; }
+    .hero { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 20px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(21,101,192,0.22) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 90%, rgba(255,214,0,0.07) 0%, transparent 60%); pointer-events: none; }
+    .hero-tag { display: inline-block; background: rgba(255,214,0,0.1); border: 1px solid rgba(255,214,0,0.35); color: var(--gold2); font-size: .82rem; font-weight: 700; padding: 6px 20px; border-radius: 30px; margin-bottom: 28px; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 900; line-height: 1.25; margin-bottom: 14px; }
+    .hero h1 .accent { color: var(--gold); }
+    .hero p { font-size: clamp(.95rem, 2.5vw, 1.2rem); color: var(--muted); max-width: 620px; margin: 0 auto 44px; line-height: 1.85; }
+    .btn-wrap { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn-download { display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, var(--gold), #e6aa00); color: #000; font-family: 'Cairo', sans-serif; font-size: 1.1rem; font-weight: 900; padding: 16px 42px; border-radius: 14px; border: none; cursor: pointer; text-decoration: none; box-shadow: 0 0 35px rgba(255,214,0,0.30), 0 4px 20px rgba(0,0,0,0.5); transition: transform .2s, box-shadow .2s; animation: pulse-gold 2.5s ease-in-out infinite; }
+    .btn-download:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 0 60px rgba(255,214,0,0.55); animation: none; }
+    .btn-download svg { width: 24px; height: 24px; fill: #000; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: transparent; color: var(--blue3); font-family: 'Cairo', sans-serif; font-size: 1rem; font-weight: 700; padding: 15px 32px; border-radius: 14px; border: 1.5px solid rgba(30,136,229,0.4); cursor: pointer; text-decoration: none; transition: background .2s; }
+    .btn-secondary:hover { background: rgba(30,136,229,0.1); }
+    .stats { display: flex; justify-content: center; flex-wrap: wrap; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(10,17,40,0.85); }
+    .stat-item { flex: 1; min-width: 160px; text-align: center; padding: 30px 24px; border-left: 1px solid var(--border); }
+    .stat-item:last-child { border-left: none; }
+    .stat-num { font-size: 2.1rem; font-weight: 900; color: var(--gold); display: block; }
+    .stat-label { font-size: .82rem; color: var(--muted); margin-top: 5px; display: block; }
+    .section { max-width: 1100px; margin: 80px auto; padding: 0 24px; }
+    .section-title { text-align: center; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; margin-bottom: 10px; }
+    .section-title .accent { color: var(--gold); }
+    .section-sub { text-align: center; color: var(--muted); font-size: .95rem; margin-bottom: 50px; }
+    .divider { width: 80px; height: 3px; background: linear-gradient(90deg, var(--blue2), var(--gold)); margin: 0 auto 50px; border-radius: 2px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .feat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: border-color .25s, transform .25s; }
+    .feat-card:hover { border-color: rgba(255,214,0,0.3); transform: translateY(-5px); }
+    .feat-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+    .feat-title { font-size: 1rem; font-weight: 700; color: var(--gold2); margin-bottom: 8px; }
+    .feat-desc { font-size: .88rem; color: var(--muted); line-height: 1.75; }
+    .cta { text-align: center; padding: 80px 24px; background: linear-gradient(180deg, transparent, rgba(21,101,192,0.07) 50%, transparent); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 40px 0; }
+    .cta h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 14px; }
+    .cta p { color: var(--muted); font-size: 1rem; margin-bottom: 36px; }
+    .cta-note { margin-top: 22px; font-size: .85rem; color: var(--muted); }
+    .cta-note span { color: var(--gold); font-weight: 700; }
+    footer { text-align: center; padding: 30px; color: var(--muted); font-size: .82rem; border-top: 1px solid var(--border); background: rgba(5,10,24,0.9); }
+    footer strong { color: var(--gold); }
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 35px rgba(255,214,0,0.30), 0 4px 20px rgba(0,0,0,0.5); }
+      50%       { box-shadow: 0 0 65px rgba(255,214,0,0.55), 0 8px 30px rgba(0,0,0,0.5); }
+    }
+    @media (max-width: 600px) { nav { padding: 14px 20px; } }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">بلديتي <span>سيدي لخضر</span></div>
+  <div class="nav-badge">🏆 قريباً</div>
+</nav>
+<section class="hero">
+  <div class="hero-tag">✦ أقوى تطبيق بلدية ذكي في الجزائر</div>
+  <h1>خدمات بلديتك<br/><span class="accent">بلمسة واحدة</span></h1>
+  <p>تطبيق ذكي شامل يربط المواطن بكل مصالح البلدية — وثائق، صحة، طوارئ، نقل، رياضة وأكثر من 22 خدمة في مكان واحد.</p>
+  <div class="btn-wrap">
+    <a href="YOUR_DOWNLOAD_LINK_HERE" class="btn-download">
+      <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
+      تحميل التطبيق الآن
+    </a>
+    <a href="#features" class="btn-secondary">اكتشف المميزات ↓</a>
+  </div>
+</section>
+<div class="stats">
+  <div class="stat-item"><span class="stat-num">22+</span><span class="stat-label">خدمة متكاملة</span></div>
+  <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">مصلحة بلدية</span></div>
+  <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">هوية موثوقة بالذكاء الاصطناعي</span></div>
+  <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">طوارئ وتنبيهات فورية</span></div>
+</div>
+<section class="section" id="features">
+  <div class="section-title">كل ما تحتاجه <span class="accent">في تطبيق واحد</span></div>
+  <div class="section-sub">أبرز الخدمات التي يوفرها التطبيق لمواطني بلدية سيدي لخضر</div>
+  <div class="divider"></div>
+  <div class="features-grid">
+    <div class="feat-card"><span class="feat-icon">📄</span><div class="feat-title">طلب الوثائق والتتبع الآلي</div><div class="feat-desc">اطلُب وثيقتك بهاتفك وتلقَّ إشعاراً فورياً لحظة جهوزها مع مكالمة مباشرة للموظف.</div></div>
+    <div class="feat-card"><span class="feat-icon">🛡️</span><div class="feat-title">هوية حقيقية 100%</div><div class="feat-desc">مطابقة الرقم الوطني ببصمة الوجه بالذكاء الاصطناعي — استحالة فتح حسابين مزيفين.</div></div>
+    <div class="feat-card"><span class="feat-icon">🚨</span><div class="feat-title">طوارئ ذكية بـ GPS</div><div class="feat-desc">تنبيه مزعج فوري للحماية المدنية أو الدرك حسب موقعك، بالصورة والفيديو والاتصال المباشر.</div></div>
+    <div class="feat-card"><span class="feat-icon">🏥</span><div class="feat-title">العيادة والصحة الذكية</div><div class="feat-desc">حجز مواعيد، مكالمات فيديو، QR Code للكشف، وتنبيه "دورك الآن" في الوقت الحقيقي.</div></div>
+    <div class="feat-card"><span class="feat-icon">💊</span><div class="feat-title">لوحة تحكم الصيدلية</div><div class="feat-desc">الصيدلاني يضيف الأدوية ويحدد المخزون، ويتحكم في زر المكالمة حسب أوقات عمله.</div></div>
+    <div class="feat-card"><span class="feat-icon">🚌</span><div class="feat-title">النقل العام الذكي</div><div class="feat-desc">تتبع الحافلات حياً وحجز مقعدك بضغطة — يصل الإشعار مباشرة لهاتف السائق.</div></div>
+    <div class="feat-card"><span class="feat-icon">⚽</span><div class="feat-title">الرياضة والبث المباشر</div><div class="feat-desc">حجز الملاعب رقمياً وتنظيم البطولات — مع بث مباشر Live للمباريات من التطبيق.</div></div>
+    <div class="feat-card"><span class="feat-icon">🕌</span><div class="feat-title">المساجد ومواقيت الصلاة</div><div class="feat-desc">أوقات الصلاة الدقيقة للمنطقة، دليل المساجد وأسماء الأئمة، وجداول حلقات القرآن الكريم.</div></div>
+    <div class="feat-card"><span class="feat-icon">💡</span><div class="feat-title">الإبلاغ عن الأعطال</div><div class="feat-desc">أبلغ عن أعطال الكهرباء والإنارة بالصوت والصورة والفيديو — يصل فوراً للمختصين.</div></div>
+    <div class="feat-card"><span class="feat-icon">🗳️</span><div class="feat-title">قرار المواطن</div><div class="feat-desc">مقترحات وتصويت مباشر على القرارات — المواطن شريك حقيقي في مستقبل منطقته.</div></div>
+    <div class="feat-card"><span class="feat-icon">🏛️</span><div class="feat-title">الدليل الإداري الشامل</div><div class="feat-desc">شرح أكثر من 100 إجراء إداري بوثائقه المطلوبة والهيكل التنظيمي الكامل للبلدية.</div></div>
+    <div class="feat-card"><span class="feat-icon">🗺️</span><div class="feat-title">الأماكن السياحية</div><div class="feat-desc">دليل مرئي بفيديوهات توضيحية لكل موقع سياحي في المنطقة مع خرائط الوصول.</div></div>
+  </div>
+</section>
+<section class="cta">
+  <h2>جاهز تكون جزء من <span style="color:var(--gold)">المدينة الذكية؟</span></h2>
+  <p>حمّل التطبيق وكن من أوائل مستخدمي أقوى تطبيق بلدية في الجزائر</p>
+  <div class="btn-wrap">
+    <a href="YOUR_DOWNLOAD_LINK_HERE" class="btn-download">
+      <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
+      تحميل التطبيق الآن
+    </a>
+  </div>
+  <p class="cta-note">⏳ متاح للتحميل بعد <span>الموافقة الرسمية من السلطات المختصة</span></p>
+</section>
+<footer>
+  <p>© 2026 <strong>بلديتي سيدي لخضر</strong> — جميع الحقوق محفوظة</p>
+  <p style="margin-top:6px; color:#4a6080;">صُنع بـ 💛 لخدمة مواطني بلدية سيدي لخضر</p>
+</footer>
+</body>
+</html>
