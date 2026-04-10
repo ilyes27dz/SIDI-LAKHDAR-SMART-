@@ -14,11 +14,15 @@
     }
     html{scroll-behavior:smooth}
     body{font-family:'Cairo',sans-serif;background:var(--navy);color:var(--text);overflow-x:hidden}
+
+    /* NAV */
     nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:rgba(13,27,42,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,214,0,0.15);position:sticky;top:0;z-index:100}
     .nav-logo{font-size:1.3rem;font-weight:900;color:var(--gold);display:flex;align-items:center;gap:10px}
     .nav-logo span{color:var(--text)}
     .nav-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:blink 1.5s ease-in-out infinite}
     .nav-badge{background:linear-gradient(135deg,var(--gold),#e6b800);color:#000;font-size:.72rem;font-weight:800;padding:5px 14px;border-radius:20px;box-shadow:0 0 15px rgba(255,214,0,0.4)}
+
+    /* HERO */
     .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px;position:relative;overflow:hidden}
     .hero-bg{position:absolute;inset:0;z-index:0}
     .hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(255,214,0,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 0% 100%,rgba(30,136,229,0.12) 0%,transparent 60%)}
@@ -34,95 +38,110 @@
     .btn-download svg{width:22px;height:22px;fill:#000}
     .btn-secondary{display:inline-flex;align-items:center;gap:10px;background:rgba(255,214,0,0.05);color:var(--gold);font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;padding:17px 34px;border-radius:16px;border:1.5px solid rgba(255,214,0,0.3);cursor:pointer;text-decoration:none;transition:all .2s}
     .btn-secondary:hover{background:rgba(255,214,0,0.12);border-color:var(--gold);transform:translateY(-3px)}
+
+    /* STATS */
     .stats{display:flex;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(255,214,0,0.1);border-bottom:1px solid rgba(255,214,0,0.1);background:rgba(17,34,64,0.9)}
     .stat-item{flex:1;min-width:150px;text-align:center;padding:32px 20px;border-left:1px solid rgba(255,214,0,0.08);transition:background .3s}
     .stat-item:hover{background:rgba(255,214,0,0.04)}
     .stat-item:last-child{border-left:none}
     .stat-num{font-size:2.3rem;font-weight:900;color:var(--gold);display:block;text-shadow:0 0 20px rgba(255,214,0,0.3)}
     .stat-label{font-size:.8rem;color:var(--muted);margin-top:6px;display:block}
-    .screenshots-section{max-width:1200px;margin:100px auto;padding:0 24px;text-align:center}
-    .section-head{margin-bottom:50px}
+
+    /* ===== GALLERY ===== */
+    .gallery-section{padding:100px 0;position:relative;overflow:hidden}
+    .gallery-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(255,214,0,0.05) 0%,transparent 70%)}
+    .section-head{text-align:center;margin-bottom:60px}
     .section-head h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;margin-bottom:12px}
     .section-head h2 .accent{color:var(--gold)}
     .section-head p{color:var(--muted);font-size:.95rem}
     .divider{width:80px;height:3px;background:linear-gradient(90deg,var(--blue3),var(--gold));margin:16px auto 0;border-radius:2px}
-    .phones-wrap{position:relative;height:600px;display:flex;align-items:center;justify-content:center;margin:20px 0}
-    .phone-card{position:absolute;width:220px;border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.6);transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s,filter .4s;cursor:pointer}
-    .phone-card img{width:100%;height:auto;display:block;border-radius:32px}
-    .phone-card:nth-child(1){transform:translateX(-300px) rotate(-8deg) scale(0.85);z-index:1;filter:brightness(0.7)}
-    .phone-card:nth-child(2){transform:translateX(-130px) rotate(-3deg) scale(0.92);z-index:2;filter:brightness(0.85)}
-    .phone-card:nth-child(3){transform:translateX(0px) rotate(0deg) scale(1);z-index:4;filter:brightness(1);box-shadow:0 40px 100px rgba(255,214,0,0.25),0 0 0 2px rgba(255,214,0,0.3)}
-    .phone-card:nth-child(4){transform:translateX(130px) rotate(3deg) scale(0.92);z-index:2;filter:brightness(0.85)}
-    .phone-card:hover{z-index:10!important;filter:brightness(1)!important;box-shadow:0 50px 120px rgba(255,214,0,0.35),0 0 0 2px rgba(255,214,0,0.5)!important}
-    .phone-card:nth-child(1):hover{transform:translateX(-300px) rotate(0deg) scale(1.05)!important}
-    .phone-card:nth-child(2):hover{transform:translateX(-130px) rotate(0deg) scale(1.05)!important}
-    .phone-card:nth-child(3):hover{transform:translateX(0px) rotate(0deg) scale(1.07)!important}
-    .phone-card:nth-child(4):hover{transform:translateX(130px) rotate(0deg) scale(1.05)!important}
-    .phone-glow{position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(255,214,0,0.12) 0%,transparent 70%);pointer-events:none;border-radius:50%;animation:glow-pulse 3s ease-in-out infinite}
-    .upload-section{max-width:700px;margin:0 auto 100px;padding:0 24px;text-align:center}
-    .upload-section h3{font-size:1.3rem;font-weight:900;color:var(--gold);margin-bottom:10px}
-    .upload-section p{color:var(--muted);font-size:.88rem;margin-bottom:20px}
-    .upload-box{border:2px dashed rgba(255,214,0,0.3);border-radius:24px;padding:44px 24px;background:rgba(17,34,64,0.5);cursor:pointer;transition:all .3s;position:relative}
-    .upload-box:hover{border-color:var(--gold);background:rgba(255,214,0,0.05);transform:scale(1.01)}
-    .upload-box input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-    .upload-icon{font-size:2.8rem;margin-bottom:14px;display:block;animation:float 3s ease-in-out infinite}
-    .upload-preview{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;justify-content:center}
-    .upload-preview img{width:110px;height:110px;object-fit:cover;border-radius:16px;border:2px solid rgba(255,214,0,0.3);transition:transform .2s,box-shadow .2s}
-    .upload-preview img:hover{transform:scale(1.08);box-shadow:0 10px 30px rgba(255,214,0,0.2)}
+
+    /* Slider */
+    .slider-container{position:relative;width:100%;overflow:hidden;padding:40px 0 60px}
+    .slider-track{display:flex;gap:28px;padding:20px 60px;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
+    .slide-card{flex:0 0 280px;border-radius:28px;overflow:hidden;position:relative;cursor:pointer;transition:transform .4s,box-shadow .4s;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+    .slide-card img{width:100%;height:100%;object-fit:cover;display:block;border-radius:28px;transition:transform .5s}
+    .slide-card::after{content:'';position:absolute;inset:0;border-radius:28px;border:2px solid transparent;transition:border-color .3s,box-shadow .3s}
+    .slide-card:hover{transform:translateY(-14px) scale(1.04)}
+    .slide-card:hover img{transform:scale(1.06)}
+    .slide-card:hover::after{border-color:rgba(255,214,0,0.6);box-shadow:0 0 40px rgba(255,214,0,0.25) inset}
+    .slide-card.active-card{transform:translateY(-18px) scale(1.06);box-shadow:0 40px 100px rgba(255,214,0,0.3),0 0 0 2px rgba(255,214,0,0.5)}
+    .slide-card.active-card img{transform:scale(1.03)}
+
+    /* Card overlay on hover */
+    .card-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(13,27,42,0.95));border-radius:0 0 28px 28px;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+    .slide-card:hover .card-overlay{transform:translateY(0)}
+    .card-overlay span{color:var(--gold);font-weight:700;font-size:.9rem}
+
+    /* Slider controls */
+    .slider-controls{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:10px}
+    .slider-btn{width:50px;height:50px;border-radius:50%;background:rgba(255,214,0,0.1);border:1.5px solid rgba(255,214,0,0.3);color:var(--gold);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .slider-btn:hover{background:rgba(255,214,0,0.25);border-color:var(--gold);transform:scale(1.1)}
+    .slider-dots{display:flex;gap:8px;align-items:center}
+    .sdot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .3s;border:none}
+    .sdot.active{background:var(--gold);width:24px;border-radius:4px}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(5,12,25,0.96);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
+    .lightbox.open{display:flex}
+    .lightbox-img{max-width:90vw;max-height:90vh;border-radius:24px;box-shadow:0 0 100px rgba(255,214,0,0.2),0 40px 100px rgba(0,0,0,0.8);animation:lbIn .3s ease}
+    .lightbox-close{position:absolute;top:24px;left:24px;width:48px;height:48px;background:rgba(255,214,0,0.1);border:1.5px solid rgba(255,214,0,0.3);color:var(--gold);font-size:1.5rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .lightbox-close:hover{background:rgba(255,214,0,0.25);transform:scale(1.1)}
+    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;background:rgba(255,214,0,0.1);border:1.5px solid rgba(255,214,0,0.3);color:var(--gold);font-size:1.6rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .lightbox-nav:hover{background:rgba(255,214,0,0.25)}
+    .lb-prev{right:24px}
+    .lb-next{left:24px}
+    @keyframes lbIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
+    /* FEATURES */
     .features-list-section{max-width:950px;margin:0 auto 100px;padding:0 24px}
     .features-list-section h2{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;text-align:center;margin-bottom:10px}
     .features-list-section h2 .accent{color:var(--gold)}
     .features-list-section .sub{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:44px}
     .feat-list-item{display:flex;align-items:flex-start;gap:18px;background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:22px 26px;margin-bottom:14px;transition:all .25s;position:relative;overflow:hidden}
     .feat-list-item::before{content:'';position:absolute;right:0;top:0;width:3px;height:100%;background:linear-gradient(180deg,var(--gold),transparent);opacity:0;transition:opacity .3s}
-    .feat-list-item:hover{border-color:rgba(255,214,0,0.3);transform:translateX(-6px);background:rgba(17,34,64,0.9);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+    .feat-list-item:hover{border-color:rgba(255,214,0,0.3);transform:translateX(-6px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
     .feat-list-item:hover::before{opacity:1}
     .feat-list-num{min-width:38px;height:38px;background:linear-gradient(135deg,var(--gold),#e6aa00);color:#000;font-weight:900;font-size:.88rem;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 15px rgba(255,214,0,0.3)}
     .feat-list-text{color:var(--text);font-size:.92rem;line-height:1.8}
     .feat-list-text strong{color:var(--gold2)}
-    .note-box{max-width:750px;margin:0 auto 100px;background:linear-gradient(135deg,rgba(255,214,0,0.07),rgba(30,136,229,0.05));border:1px solid rgba(255,214,0,0.2);border-radius:24px;padding:36px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
+
+    /* NOTE */
+    .note-box{max-width:750px;margin:0 auto 100px;background:linear-gradient(135deg,rgba(255,214,0,0.07),rgba(30,136,229,0.05));border:1px solid rgba(255,214,0,0.2);border-radius:24px;padding:36px;text-align:center}
     .note-box p{color:var(--text);font-size:.95rem;line-height:2}
     .note-box strong{color:var(--gold)}
+
+    /* CTA */
     .cta{text-align:center;padding:100px 24px;position:relative;overflow:hidden}
     .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(255,214,0,0.06) 0%,transparent 70%)}
     .cta h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;margin-bottom:16px;position:relative}
     .cta p{color:var(--muted);font-size:1rem;margin-bottom:40px;position:relative}
     .cta-note{margin-top:24px;font-size:.85rem;color:var(--muted);position:relative}
     .cta-note span{color:var(--gold);font-weight:700}
+
     footer{text-align:center;padding:32px;color:var(--muted);font-size:.82rem;border-top:1px solid rgba(255,214,0,0.1);background:rgba(10,20,35,0.95)}
     footer strong{color:var(--gold)}
+
+    /* ANIMATIONS */
     @keyframes pulse-gold{0%,100%{box-shadow:0 0 40px rgba(255,214,0,0.35),0 8px 30px rgba(0,0,0,0.4)}50%{box-shadow:0 0 80px rgba(255,214,0,0.65),0 12px 40px rgba(0,0,0,0.5)}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    @keyframes glow-pulse{0%,100%{opacity:0.6;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+    @keyframes glow-pulse{0%,100%{opacity:.6}50%{opacity:1}}
     .animate-on-scroll{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
     .animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
     @media(max-width:768px){
       nav{padding:14px 20px}
-      .phones-wrap{height:400px}
-      .phone-card{width:150px}
-      .phone-card:nth-child(1){transform:translateX(-200px) rotate(-8deg) scale(0.85)}
-      .phone-card:nth-child(2){transform:translateX(-90px) rotate(-3deg) scale(0.92)}
-      .phone-card:nth-child(4){transform:translateX(90px) rotate(3deg) scale(0.92)}
-    }
-    @media(max-width:480px){
-      .phones-wrap{height:320px}
-      .phone-card{width:120px}
-      .phone-card:nth-child(1){transform:translateX(-155px) rotate(-8deg) scale(0.8)}
-      .phone-card:nth-child(2){transform:translateX(-70px) rotate(-3deg) scale(0.9)}
-      .phone-card:nth-child(4){transform:translateX(70px) rotate(3deg) scale(0.9)}
+      .slide-card{flex:0 0 220px}
+      .slider-track{padding:20px 30px}
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">
-    <div class="nav-dot"></div>
-    بلديتي <span>سيدي لخضر</span>
-  </div>
+  <div class="nav-logo"><div class="nav-dot"></div>بلديتي <span>سيدي لخضر</span></div>
   <div class="nav-badge">🏆 قريباً</div>
 </nav>
 
@@ -149,41 +168,56 @@
   <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">طوارئ وتنبيهات فورية</span></div>
 </div>
 
-<section class="screenshots-section animate-on-scroll" id="screenshots">
+<!-- GALLERY SLIDER -->
+<section class="gallery-section animate-on-scroll" id="screenshots">
   <div class="section-head">
     <h2>من داخل <span class="accent">التطبيق</span></h2>
-    <p>لقطات حقيقية من واجهات التطبيق الذكي</p>
+    <p>اضغط على أي صورة لعرضها بالحجم الكامل</p>
     <div class="divider"></div>
   </div>
-  <div class="phones-wrap">
-    <div class="phone-glow"></div>
-    <div class="phone-card">
-      <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg" alt="واجهة 1"/>
+
+  <div class="slider-container">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide-card active-card" onclick="openLightbox(0)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg" alt="واجهة 1"/>
+        <div class="card-overlay"><span>🏛️ الواجهة الرئيسية</span></div>
+      </div>
+      <div class="slide-card" onclick="openLightbox(1)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg" alt="واجهة 2"/>
+        <div class="card-overlay"><span>🎨 شاشات التعريف</span></div>
+      </div>
+      <div class="slide-card" onclick="openLightbox(2)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img3.jpg" alt="واجهة 3"/>
+        <div class="card-overlay"><span>🏗️ الخدمات الرقمية</span></div>
+      </div>
+      <div class="slide-card" onclick="openLightbox(3)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg" alt="واجهة 4"/>
+        <div class="card-overlay"><span>🌟 شاشة الانطلاق</span></div>
+      </div>
     </div>
-    <div class="phone-card">
-      <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg" alt="واجهة 2"/>
+  </div>
+
+  <div class="slider-controls">
+    <button class="slider-btn" onclick="slideMove(1)">&#8250;</button>
+    <div class="slider-dots" id="sliderDots">
+      <button class="sdot active" onclick="slideTo(0)"></button>
+      <button class="sdot" onclick="slideTo(1)"></button>
+      <button class="sdot" onclick="slideTo(2)"></button>
+      <button class="sdot" onclick="slideTo(3)"></button>
     </div>
-    <div class="phone-card">
-      <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img3.jpg" alt="واجهة 3"/>
-    </div>
-    <div class="phone-card">
-      <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg" alt="واجهة 4"/>
-    </div>
+    <button class="slider-btn" onclick="slideMove(-1)">&#8249;</button>
   </div>
 </section>
 
-<div class="upload-section animate-on-scroll">
-  <h3>📸 أضف صور جديدة للتطبيق</h3>
-  <p>يمكنك رفع صور إضافية لعرضها في المعرض</p>
-  <div class="upload-box">
-    <input type="file" accept="image/*" multiple onchange="handleUpload(event)"/>
-    <span class="upload-icon">🖼️</span>
-    <div><strong style="color:var(--gold)">اسحب الصور هنا</strong> <span style="color:var(--muted)">أو اضغط للاختيار</span></div>
-    <div style="margin-top:8px;font-size:.8rem;color:var(--muted)">PNG · JPG · WEBP</div>
-  </div>
-  <div class="upload-preview" id="uploadPreview"></div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lb-prev" onclick="lbNav(1)">&#8249;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+  <button class="lightbox-nav lb-next" onclick="lbNav(-1)">&#8250;</button>
 </div>
 
+<!-- FEATURES -->
 <section class="features-list-section animate-on-scroll" id="features">
   <h2>كل ما يقدمه <span class="accent">التطبيق</span></h2>
   <div class="sub">نبذة شاملة عن خدمات تطبيق بلدية سيدي لخضر الذكية</div>
@@ -234,57 +268,68 @@
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-  }, {threshold: 0.1});
+  },{threshold:0.1});
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-  const phones = document.querySelectorAll('.phone-card');
-  const baseFilters = ['brightness(0.7)','brightness(0.85)','brightness(1)','brightness(0.85)'];
-  phones.forEach((card, i) => {
-    card.addEventListener('mouseenter', () => {
-      phones.forEach((c, j) => { if(j !== i) c.style.filter = 'brightness(0.4)'; });
-    });
-    card.addEventListener('mouseleave', () => {
-      phones.forEach((c, j) => { c.style.filter = baseFilters[j] || 'brightness(0.85)'; });
-    });
-  });
+  // Slider
+  const images = [
+    'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg',
+    'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg',
+    'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img3.jpg',
+    'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg',
+  ];
+  let sliderIdx = 0;
+  const track = document.getElementById('sliderTrack');
+  const dots = document.querySelectorAll('.sdot');
 
-  function handleUpload(e) {
-    const files = Array.from(e.target.files);
-    const preview = document.getElementById('uploadPreview');
-    const wrap = document.querySelector('.phones-wrap');
-    const positions = [260, 390, 520];
-    let offset = positions[Math.min(wrap.querySelectorAll('.phone-card').length - 4, 2)] || 260;
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        const thumb = document.createElement('img');
-        thumb.src = ev.target.result;
-        preview.appendChild(thumb);
-        const card = document.createElement('div');
-        card.className = 'phone-card';
-        card.style.cssText = `transform:translateX(${offset}px) rotate(6deg) scale(0.88);filter:brightness(0.75);z-index:1`;
-        const ci = document.createElement('img');
-        ci.src = ev.target.result;
-        card.appendChild(ci);
-        wrap.appendChild(card);
-        offset += 130;
-        card.addEventListener('mouseenter', () => {
-          document.querySelectorAll('.phone-card').forEach(c => { if(c !== card) c.style.filter = 'brightness(0.4)'; });
-          card.style.filter = 'brightness(1)';
-          card.style.zIndex = '10';
-        });
-        card.addEventListener('mouseleave', () => {
-          document.querySelectorAll('.phone-card').forEach((c, j) => {
-            c.style.filter = baseFilters[j] || 'brightness(0.85)';
-            c.style.zIndex = j === 2 ? '4' : j > 2 ? '2' : '1';
-          });
-        });
-      };
-      reader.readAsDataURL(file);
-    });
+  function updateSlider() {
+    const cardW = track.querySelector('.slide-card').offsetWidth + 28;
+    track.style.transform = `translateX(${sliderIdx * cardW}px)`;
+    track.querySelectorAll('.slide-card').forEach((c,i) => c.classList.toggle('active-card', i === sliderIdx));
+    dots.forEach((d,i) => d.classList.toggle('active', i === sliderIdx));
   }
+  function slideMove(dir) {
+    sliderIdx = (sliderIdx - dir + images.length) % images.length;
+    updateSlider();
+  }
+  function slideTo(i) { sliderIdx = i; updateSlider(); }
+  setInterval(() => slideMove(-1), 4000);
+
+  // Lightbox
+  let lbIdx = 0;
+  function openLightbox(i) {
+    lbIdx = i;
+    document.getElementById('lightboxImg').src = images[i];
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLightboxOutside(e) {
+    if(e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+  function lbNav(dir) {
+    lbIdx = (lbIdx + dir + images.length) % images.length;
+    const img = document.getElementById('lightboxImg');
+    img.style.opacity = '0';
+    img.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      img.src = images[lbIdx];
+      img.style.opacity = '1';
+      img.style.transform = 'scale(1)';
+    }, 200);
+  }
+  document.getElementById('lightboxImg').style.transition = 'opacity .2s,transform .2s';
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowRight') lbNav(1);
+    if(e.key === 'ArrowLeft') lbNav(-1);
+  });
 </script>
 </body>
 </html>
