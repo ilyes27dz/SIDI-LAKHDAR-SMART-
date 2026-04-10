@@ -3,94 +3,100 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>بلديتي سيدي لخضر — التطبيق الذكي</title>
+  <title>سيدي لخضر الذكية — Sidi Lakhdar Smart</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --gold:#FFD600;--gold2:#FFCA28;
-      --navy:#0D1B2A;--navy2:#112240;
-      --border:#1e3a5f;--text:#E8EEF8;--muted:#7B93BC;--blue3:#42A5F5;
+      --navy:#0B1E35;--navy2:#0F2847;--navy3:#142f55;
+      --border:#1e3a5f;--text:#E8EEF8;--muted:#7B93BC;--blue:#1565C0;--blue2:#1E88E5;--blue3:#42A5F5;
     }
     html{scroll-behavior:smooth}
     body{font-family:'Cairo',sans-serif;background:var(--navy);color:var(--text);overflow-x:hidden}
 
     /* NAV */
-    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:rgba(13,27,42,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,214,0,0.15);position:sticky;top:0;z-index:100}
-    .nav-logo{font-size:1.3rem;font-weight:900;color:var(--gold);display:flex;align-items:center;gap:10px}
-    .nav-logo span{color:var(--text)}
-    .nav-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:blink 1.5s ease-in-out infinite}
-    .nav-badge{background:linear-gradient(135deg,var(--gold),#e6b800);color:#000;font-size:.72rem;font-weight:800;padding:5px 14px;border-radius:20px;box-shadow:0 0 15px rgba(255,214,0,0.4)}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:16px 40px;background:rgba(11,30,53,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,214,0,0.15);position:sticky;top:0;z-index:100}
+    .nav-logo{display:flex;flex-direction:column;gap:2px}
+    .nav-logo-ar{font-size:1.1rem;font-weight:900;color:var(--gold)}
+    .nav-logo-ar span{color:var(--text)}
+    .nav-logo-sub{font-size:.65rem;color:var(--muted);font-weight:600;letter-spacing:1px;display:flex;gap:8px}
+    .nav-logo-sub span{color:var(--blue3)}
+    .nav-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:blink 1.5s ease-in-out infinite;display:inline-block;margin-left:6px}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .nav-dl-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#e6aa00);color:#000;font-family:'Cairo',sans-serif;font-size:.78rem;font-weight:900;padding:8px 18px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 0 15px rgba(255,214,0,0.3)}
+    .nav-dl-btn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(255,214,0,0.5)}
+    .nav-dl-btn svg{width:14px;height:14px;fill:#000}
 
     /* HERO */
     .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px;position:relative;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;z-index:0}
-    .hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(255,214,0,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 0% 100%,rgba(30,136,229,0.12) 0%,transparent 60%)}
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,214,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,214,0,0.03) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#061525 0%,#0D2540 40%,#0a1e38 70%,#071628 100%)}
+    .hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 20%,rgba(21,101,192,0.25) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 10% 80%,rgba(255,214,0,0.07) 0%,transparent 55%),radial-gradient(ellipse 40% 35% at 90% 70%,rgba(30,136,229,0.1) 0%,transparent 55%)}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,214,0,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,214,0,0.025) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 85% 85% at 50% 50%,black,transparent)}
     .hero-content{position:relative;z-index:1}
-    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);color:var(--gold2);font-size:.82rem;font-weight:700;padding:8px 22px;border-radius:30px;margin-bottom:32px;animation:fadeDown .8s ease}
-    .hero h1{font-size:clamp(2.2rem,7vw,5rem);font-weight:900;line-height:1.15;margin-bottom:20px;animation:fadeUp .8s ease .1s both}
-    .hero h1 .accent{color:var(--gold);text-shadow:0 0 40px rgba(255,214,0,0.4)}
-    .hero p{font-size:clamp(1rem,2.5vw,1.25rem);color:var(--muted);max-width:650px;margin:0 auto 50px;line-height:1.9;animation:fadeUp .8s ease .2s both}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,214,0,0.1);border:1px solid rgba(255,214,0,0.3);color:var(--gold2);font-size:.82rem;font-weight:700;padding:8px 22px;border-radius:30px;margin-bottom:20px;animation:fadeDown .8s ease}
+    .hero-titles{margin-bottom:16px;animation:fadeUp .8s ease .1s both}
+    .hero-ar{font-size:clamp(2.5rem,8vw,5.5rem);font-weight:900;line-height:1.1;color:var(--text)}
+    .hero-ar .accent{color:var(--gold);text-shadow:0 0 50px rgba(255,214,0,0.45)}
+    .hero-lang{display:flex;justify-content:center;gap:20px;margin-top:10px}
+    .hero-lang-fr{font-size:clamp(1rem,3vw,1.8rem);font-weight:700;color:rgba(255,255,255,0.55);letter-spacing:.5px}
+    .hero-lang-en{font-size:clamp(1rem,3vw,1.8rem);font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:.5px}
+    .hero-sep{color:rgba(255,214,0,0.3);font-size:1.5rem}
+    .hero p{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--muted);max-width:620px;margin:0 auto 48px;line-height:1.9;animation:fadeUp .8s ease .2s both}
     .btn-wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s ease .3s both}
-    .btn-download{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--gold),#e6aa00);color:#000;font-family:'Cairo',sans-serif;font-size:1.1rem;font-weight:900;padding:18px 46px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 0 40px rgba(255,214,0,0.35),0 8px 30px rgba(0,0,0,0.4);transition:transform .2s,box-shadow .2s;animation:pulse-gold 2.5s ease-in-out infinite}
-    .btn-download:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 0 70px rgba(255,214,0,0.6),0 12px 40px rgba(0,0,0,0.5);animation:none}
-    .btn-download svg{width:22px;height:22px;fill:#000}
-    .btn-secondary{display:inline-flex;align-items:center;gap:10px;background:rgba(255,214,0,0.05);color:var(--gold);font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;padding:17px 34px;border-radius:16px;border:1.5px solid rgba(255,214,0,0.3);cursor:pointer;text-decoration:none;transition:all .2s}
+    .btn-download{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--gold),#e6aa00);color:#000;font-family:'Cairo',sans-serif;font-size:1.05rem;font-weight:900;padding:16px 40px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;box-shadow:0 0 40px rgba(255,214,0,0.35),0 8px 30px rgba(0,0,0,0.4);transition:transform .2s,box-shadow .2s;animation:pulse-gold 2.5s ease-in-out infinite}
+    .btn-download:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 0 70px rgba(255,214,0,0.6);animation:none}
+    .btn-download svg{width:20px;height:20px;fill:#000}
+    .btn-download .dl-icons{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+    .btn-download .dl-main{font-size:.95rem;font-weight:900;line-height:1}
+    .btn-download .dl-sub{font-size:.65rem;font-weight:600;opacity:.75}
+    .btn-secondary{display:inline-flex;align-items:center;gap:10px;background:rgba(255,214,0,0.05);color:var(--gold);font-family:'Cairo',sans-serif;font-size:1rem;font-weight:700;padding:15px 32px;border-radius:16px;border:1.5px solid rgba(255,214,0,0.3);cursor:pointer;text-decoration:none;transition:all .2s}
     .btn-secondary:hover{background:rgba(255,214,0,0.12);border-color:var(--gold);transform:translateY(-3px)}
 
     /* STATS */
-    .stats{display:flex;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(255,214,0,0.1);border-bottom:1px solid rgba(255,214,0,0.1);background:rgba(17,34,64,0.9)}
-    .stat-item{flex:1;min-width:150px;text-align:center;padding:32px 20px;border-left:1px solid rgba(255,214,0,0.08);transition:background .3s}
+    .stats{display:flex;justify-content:center;flex-wrap:wrap;border-top:1px solid rgba(255,214,0,0.1);border-bottom:1px solid rgba(255,214,0,0.1);background:rgba(15,40,71,0.95)}
+    .stat-item{flex:1;min-width:150px;text-align:center;padding:30px 20px;border-left:1px solid rgba(255,214,0,0.07);transition:background .3s}
     .stat-item:hover{background:rgba(255,214,0,0.04)}
     .stat-item:last-child{border-left:none}
-    .stat-num{font-size:2.3rem;font-weight:900;color:var(--gold);display:block;text-shadow:0 0 20px rgba(255,214,0,0.3)}
-    .stat-label{font-size:.8rem;color:var(--muted);margin-top:6px;display:block}
+    .stat-num{font-size:2.2rem;font-weight:900;color:var(--gold);display:block;text-shadow:0 0 20px rgba(255,214,0,0.3)}
+    .stat-label{font-size:.79rem;color:var(--muted);margin-top:5px;display:block}
 
-    /* ===== GALLERY ===== */
-    .gallery-section{padding:100px 0;position:relative;overflow:hidden}
-    .gallery-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(255,214,0,0.05) 0%,transparent 70%)}
-    .section-head{text-align:center;margin-bottom:60px}
+    /* GALLERY */
+    .gallery-section{padding:100px 0;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--navy) 0%,#0a1e38 50%,var(--navy) 100%)}
+    .gallery-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(21,101,192,0.08) 0%,transparent 70%)}
+    .section-head{text-align:center;margin-bottom:60px;padding:0 24px}
     .section-head h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;margin-bottom:12px}
     .section-head h2 .accent{color:var(--gold)}
-    .section-head p{color:var(--muted);font-size:.95rem}
-    .divider{width:80px;height:3px;background:linear-gradient(90deg,var(--blue3),var(--gold));margin:16px auto 0;border-radius:2px}
+    .section-head p{color:var(--muted);font-size:.92rem}
+    .divider{width:80px;height:3px;background:linear-gradient(90deg,var(--blue2),var(--gold));margin:14px auto 0;border-radius:2px}
 
-    /* Slider */
-    .slider-container{position:relative;width:100%;overflow:hidden;padding:40px 0 60px}
-    .slider-track{display:flex;gap:28px;padding:20px 60px;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
-    .slide-card{flex:0 0 280px;border-radius:28px;overflow:hidden;position:relative;cursor:pointer;transition:transform .4s,box-shadow .4s;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-    .slide-card img{width:100%;height:100%;object-fit:cover;display:block;border-radius:28px;transition:transform .5s}
-    .slide-card::after{content:'';position:absolute;inset:0;border-radius:28px;border:2px solid transparent;transition:border-color .3s,box-shadow .3s}
-    .slide-card:hover{transform:translateY(-14px) scale(1.04)}
-    .slide-card:hover img{transform:scale(1.06)}
-    .slide-card:hover::after{border-color:rgba(255,214,0,0.6);box-shadow:0 0 40px rgba(255,214,0,0.25) inset}
-    .slide-card.active-card{transform:translateY(-18px) scale(1.06);box-shadow:0 40px 100px rgba(255,214,0,0.3),0 0 0 2px rgba(255,214,0,0.5)}
-    .slide-card.active-card img{transform:scale(1.03)}
+    .slider-container{position:relative;width:100%;overflow:hidden;padding:30px 0 50px}
+    .slider-track{display:flex;gap:24px;padding:20px 80px;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
+    .slide-card{flex:0 0 260px;border-radius:26px;overflow:hidden;position:relative;cursor:pointer;transition:transform .4s,box-shadow .4s,filter .4s;box-shadow:0 20px 60px rgba(0,0,0,0.55);filter:brightness(.85) saturate(.9)}
+    .slide-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .slide-card::after{content:'';position:absolute;inset:0;border-radius:26px;border:2px solid transparent;transition:all .3s}
+    .slide-card:hover,.slide-card.active-card{filter:brightness(1) saturate(1.05);transform:translateY(-16px) scale(1.04);box-shadow:0 40px 90px rgba(0,0,0,0.6),0 0 0 2px rgba(255,214,0,0.5),0 0 40px rgba(255,214,0,0.15)}
+    .slide-card:hover img,.slide-card.active-card img{transform:scale(1.05)}
+    .card-overlay{position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(transparent,rgba(11,30,53,0.96));border-radius:0 0 26px 26px;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+    .slide-card:hover .card-overlay,.slide-card.active-card .card-overlay{transform:translateY(0)}
+    .card-overlay span{color:var(--gold);font-weight:700;font-size:.88rem}
 
-    /* Card overlay on hover */
-    .card-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(13,27,42,0.95));border-radius:0 0 28px 28px;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
-    .slide-card:hover .card-overlay{transform:translateY(0)}
-    .card-overlay span{color:var(--gold);font-weight:700;font-size:.9rem}
-
-    /* Slider controls */
-    .slider-controls{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:10px}
-    .slider-btn{width:50px;height:50px;border-radius:50%;background:rgba(255,214,0,0.1);border:1.5px solid rgba(255,214,0,0.3);color:var(--gold);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-    .slider-btn:hover{background:rgba(255,214,0,0.25);border-color:var(--gold);transform:scale(1.1)}
+    .slider-controls{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:8px}
+    .slider-btn{width:48px;height:48px;border-radius:50%;background:rgba(255,214,0,0.08);border:1.5px solid rgba(255,214,0,0.25);color:var(--gold);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .slider-btn:hover{background:rgba(255,214,0,0.22);border-color:var(--gold);transform:scale(1.1)}
     .slider-dots{display:flex;gap:8px;align-items:center}
     .sdot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .3s;border:none}
-    .sdot.active{background:var(--gold);width:24px;border-radius:4px}
+    .sdot.active{background:var(--gold);width:22px;border-radius:4px}
 
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(5,12,25,0.96);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
+    /* LIGHTBOX */
+    .lightbox{position:fixed;inset:0;background:rgba(6,15,28,0.97);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(16px)}
     .lightbox.open{display:flex}
-    .lightbox-img{max-width:90vw;max-height:90vh;border-radius:24px;box-shadow:0 0 100px rgba(255,214,0,0.2),0 40px 100px rgba(0,0,0,0.8);animation:lbIn .3s ease}
-    .lightbox-close{position:absolute;top:24px;left:24px;width:48px;height:48px;background:rgba(255,214,0,0.1);border:1.5px solid rgba(255,214,0,0.3);color:var(--gold);font-size:1.5rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .lightbox-img{max-width:88vw;max-height:88vh;border-radius:22px;box-shadow:0 0 120px rgba(255,214,0,0.18),0 40px 100px rgba(0,0,0,0.9);animation:lbIn .3s ease}
+    .lightbox-close{position:absolute;top:22px;left:22px;width:46px;height:46px;background:rgba(255,214,0,0.1);border:1.5px solid rgba(255,214,0,0.3);color:var(--gold);font-size:1.4rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
     .lightbox-close:hover{background:rgba(255,214,0,0.25);transform:scale(1.1)}
-    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;background:rgba(255,214,0,0.1);border:1.5px solid rgba(255,214,0,0.3);color:var(--gold);font-size:1.6rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-    .lightbox-nav:hover{background:rgba(255,214,0,0.25)}
-    .lb-prev{right:24px}
-    .lb-next{left:24px}
+    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;background:rgba(255,214,0,0.09);border:1.5px solid rgba(255,214,0,0.25);color:var(--gold);font-size:1.6rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .lightbox-nav:hover{background:rgba(255,214,0,0.22)}
+    .lb-prev{right:22px}.lb-next{left:22px}
     @keyframes lbIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
 
     /* FEATURES */
@@ -106,61 +112,89 @@
     .feat-list-text{color:var(--text);font-size:.92rem;line-height:1.8}
     .feat-list-text strong{color:var(--gold2)}
 
-    /* NOTE */
-    .note-box{max-width:750px;margin:0 auto 100px;background:linear-gradient(135deg,rgba(255,214,0,0.07),rgba(30,136,229,0.05));border:1px solid rgba(255,214,0,0.2);border-radius:24px;padding:36px;text-align:center}
-    .note-box p{color:var(--text);font-size:.95rem;line-height:2}
-    .note-box strong{color:var(--gold)}
+    /* NOTE BOX */
+    .note-box{max-width:750px;margin:0 auto 100px;background:linear-gradient(135deg,rgba(21,101,192,0.12),rgba(255,214,0,0.06));border:1px solid rgba(30,136,229,0.3);border-radius:24px;padding:38px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.25)}
+    .note-box-title{font-size:1.2rem;font-weight:900;color:var(--gold);margin-bottom:20px}
+    .note-items{display:flex;flex-direction:column;gap:14px}
+    .note-item{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(30,136,229,0.2);border-radius:14px;padding:14px 20px;text-align:right}
+    .note-item-icon{font-size:1.5rem;flex-shrink:0}
+    .note-item-text{color:var(--text);font-size:.92rem;line-height:1.7}
+    .note-item-text strong{color:var(--gold2)}
 
     /* CTA */
-    .cta{text-align:center;padding:100px 24px;position:relative;overflow:hidden}
-    .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(255,214,0,0.06) 0%,transparent 70%)}
+    .cta{text-align:center;padding:100px 24px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--navy) 0%,#071628 100%)}
+    .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(21,101,192,0.1) 0%,transparent 70%)}
     .cta h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;margin-bottom:16px;position:relative}
     .cta p{color:var(--muted);font-size:1rem;margin-bottom:40px;position:relative}
     .cta-note{margin-top:24px;font-size:.85rem;color:var(--muted);position:relative}
     .cta-note span{color:var(--gold);font-weight:700}
+    .dl-store-badges{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+    .store-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:12px 22px;color:var(--text);font-family:'Cairo',sans-serif;font-size:.85rem;font-weight:700;text-decoration:none;transition:all .2s}
+    .store-badge:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,214,0,0.3);transform:translateY(-3px)}
+    .store-badge svg{width:22px;height:22px}
 
-    footer{text-align:center;padding:32px;color:var(--muted);font-size:.82rem;border-top:1px solid rgba(255,214,0,0.1);background:rgba(10,20,35,0.95)}
+    footer{text-align:center;padding:32px;color:var(--muted);font-size:.82rem;border-top:1px solid rgba(255,214,0,0.08);background:#060f1c}
     footer strong{color:var(--gold)}
+    .footer-langs{font-size:.75rem;margin-top:6px;color:#3a5070}
 
-    /* ANIMATIONS */
     @keyframes pulse-gold{0%,100%{box-shadow:0 0 40px rgba(255,214,0,0.35),0 8px 30px rgba(0,0,0,0.4)}50%{box-shadow:0 0 80px rgba(255,214,0,0.65),0 12px 40px rgba(0,0,0,0.5)}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-    @keyframes glow-pulse{0%,100%{opacity:.6}50%{opacity:1}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
     .animate-on-scroll{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
     .animate-on-scroll.visible{opacity:1;transform:translateY(0)}
-
     @media(max-width:768px){
       nav{padding:14px 20px}
       .slide-card{flex:0 0 220px}
       .slider-track{padding:20px 30px}
+      .hero-lang{flex-direction:column;gap:4px}
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo"><div class="nav-dot"></div>بلديتي <span>سيدي لخضر</span></div>
-  <div class="nav-badge">🏆 قريباً</div>
+  <div class="nav-logo">
+    <div class="nav-logo-ar">سيدي لخضر <span>الذكية</span><div class="nav-dot" style="display:inline-block"></div></div>
+    <div class="nav-logo-sub"><span>Sidi Lakhdar Smart</span> · <span>Ville Intelligente</span></div>
+  </div>
+  <div class="nav-actions">
+    <a href="https://drive.google.com/uc?export=download&id=1Sa_K3lVqKGI5olyLt4z-C9RPRoREbs9L" class="nav-dl-btn" download>
+      <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
+      تحميل التطبيق
+    </a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"><div class="hero-grid"></div></div>
   <div class="hero-content">
-    <div class="hero-tag">✦ أقوى تطبيق بلدية ذكي في الجزائر</div>
-    <h1>خدمات بلديتك<br/><span class="accent">بلمسة واحدة</span></h1>
+    <div class="hero-tag">🏙️ المدينة الذكية الأولى في المنطقة</div>
+    <div class="hero-titles">
+      <div class="hero-ar">سيدي لخضر <span class="accent">الذكية</span></div>
+      <div class="hero-lang">
+        <span class="hero-lang-fr">Sidi Lakhdar Intelligente</span>
+        <span class="hero-sep">·</span>
+        <span class="hero-lang-en">Sidi Lakhdar Smart City</span>
+      </div>
+    </div>
     <p>تطبيق ذكي شامل يربط المواطن بكل مصالح البلدية — وثائق، صحة، طوارئ، نقل، رياضة وأكثر من 22 خدمة في مكان واحد.</p>
     <div class="btn-wrap">
       <a href="https://drive.google.com/uc?export=download&id=1Sa_K3lVqKGI5olyLt4z-C9RPRoREbs9L" class="btn-download" download>
         <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
-        تحميل التطبيق الآن
+        <div class="dl-icons">
+          <span class="dl-main">تحميل التطبيق</span>
+          <span class="dl-sub">APK مجاني · Android</span>
+        </div>
       </a>
       <a href="#screenshots" class="btn-secondary">شاهد التطبيق ↓</a>
     </div>
   </div>
 </section>
 
+<!-- STATS -->
 <div class="stats">
   <div class="stat-item"><span class="stat-num">22+</span><span class="stat-label">خدمة متكاملة</span></div>
   <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">مصلحة بلدية</span></div>
@@ -168,14 +202,13 @@
   <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">طوارئ وتنبيهات فورية</span></div>
 </div>
 
-<!-- GALLERY SLIDER -->
+<!-- GALLERY -->
 <section class="gallery-section animate-on-scroll" id="screenshots">
   <div class="section-head">
     <h2>من داخل <span class="accent">التطبيق</span></h2>
     <p>اضغط على أي صورة لعرضها بالحجم الكامل</p>
     <div class="divider"></div>
   </div>
-
   <div class="slider-container">
     <div class="slider-track" id="sliderTrack">
       <div class="slide-card active-card" onclick="openLightbox(0)">
@@ -196,7 +229,6 @@
       </div>
     </div>
   </div>
-
   <div class="slider-controls">
     <button class="slider-btn" onclick="slideMove(1)">&#8250;</button>
     <div class="slider-dots" id="sliderDots">
@@ -245,36 +277,62 @@
   <div class="feat-list-item"><div class="feat-list-num">22</div><div class="feat-list-text"><strong>تواصل ودردشة شاملة:</strong> محادثات حية تربطك بالمدير، الطبيب، الصيدلاني، التاجر والعامل البلدي — بلا حواجز.</div></div>
 </section>
 
+<!-- NOTE BOX -->
 <div class="note-box animate-on-scroll">
-  <p>✨ <strong>وهذا ليس كل شيء</strong> — هناك ميزات إضافية مذهلة تكتشفها بنفسك عند تصفح التطبيق!</p>
-  <p style="margin-top:18px">📅 سيتم نشر <strong>النسخة التجريبية</strong> يوم السبت إن شاء الله لكل سكان المنطقة،<br/>والنسخة النهائية تُنشر على <strong>متجر Play Store</strong> بعد أخذ الموافقة من السلطات إن شاء الله ✅💚</p>
+  <div class="note-box-title">🚀 ما الذي ينتظرك قريباً؟</div>
+  <div class="note-items">
+    <div class="note-item">
+      <span class="note-item-icon">🔄</span>
+      <div class="note-item-text"><strong>سيتم تطوير النسخة أكثر في الأيام المقبلة</strong> — نعمل باستمرار على تحسين التجربة وإضافة مزايا جديدة.</div>
+    </div>
+    <div class="note-item">
+      <span class="note-item-icon">📲</span>
+      <div class="note-item-text"><strong>تحديثات مباشرة تصلك كل مرة</strong> — لا تفوّت أي جديد، التطبيق يُحدَّث تلقائياً لديك.</div>
+    </div>
+    <div class="note-item">
+      <span class="note-item-icon">🎯</span>
+      <div class="note-item-text"><strong>ميزات إضافية ووظائف سيتم الإعلان عنها قريباً</strong> — ترقّب المفاجآت القادمة!</div>
+    </div>
+  </div>
 </div>
 
+<!-- CTA -->
 <section class="cta animate-on-scroll">
   <h2>جاهز تكون جزء من <span style="color:var(--gold)">المدينة الذكية؟</span></h2>
-  <p>حمّل التطبيق وكن من أوائل مستخدمي أقوى تطبيق بلدية في الجزائر</p>
+  <p>حمّل التطبيق الآن وكن من أوائل مستخدمي سيدي لخضر الذكية</p>
   <div class="btn-wrap">
     <a href="https://drive.google.com/uc?export=download&id=1Sa_K3lVqKGI5olyLt4z-C9RPRoREbs9L" class="btn-download" download>
       <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
-      تحميل التطبيق الآن
+      <div class="dl-icons">
+        <span class="dl-main">تحميل مجاني</span>
+        <span class="dl-sub">APK · Android</span>
+      </div>
     </a>
   </div>
-  <p class="cta-note">⏳ متاح للتحميل بعد <span>الموافقة الرسمية من السلطات المختصة</span></p>
+  <div class="dl-store-badges">
+    <a href="#" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2.4 2.4 0 0 0 2.67-.26L17.37 12 5.85.5A2.4 2.4 0 0 0 3.18.76C2.45 1.18 2 1.95 2 2.88v18.24c0 .93.45 1.7 1.18 2.12zm10.44-11.76L5.3 3.68 17.03 12 5.3 20.32l8.32-8.32z"/></svg>
+      Play Store — قريباً
+    </a>
+    <a href="#" class="store-badge">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      App Store — قريباً
+    </a>
+  </div>
+  <p class="cta-note">⏳ متاح بعد <span>الموافقة الرسمية من السلطات المختصة</span></p>
 </section>
 
 <footer>
-  <p>© 2026 <strong>بلديتي سيدي لخضر</strong> — جميع الحقوق محفوظة</p>
-  <p style="margin-top:8px;color:#3a5070">صُنع بـ 💛 لخدمة مواطني بلدية سيدي لخضر</p>
+  <p>© 2026 <strong>سيدي لخضر الذكية</strong> — جميع الحقوق محفوظة</p>
+  <div class="footer-langs">Sidi Lakhdar Smart City · Ville Intelligente de Sidi Lakhdar</div>
 </footer>
 
 <script>
-  // Scroll animations
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
   },{threshold:0.1});
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-  // Slider
   const images = [
     'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg',
     'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg',
@@ -283,53 +341,34 @@
   ];
   let sliderIdx = 0;
   const track = document.getElementById('sliderTrack');
-  const dots = document.querySelectorAll('.sdot');
 
   function updateSlider() {
-    const cardW = track.querySelector('.slide-card').offsetWidth + 28;
+    const cardW = track.querySelector('.slide-card').offsetWidth + 24;
     track.style.transform = `translateX(${sliderIdx * cardW}px)`;
     track.querySelectorAll('.slide-card').forEach((c,i) => c.classList.toggle('active-card', i === sliderIdx));
-    dots.forEach((d,i) => d.classList.toggle('active', i === sliderIdx));
+    document.querySelectorAll('.sdot').forEach((d,i) => d.classList.toggle('active', i === sliderIdx));
   }
-  function slideMove(dir) {
-    sliderIdx = (sliderIdx - dir + images.length) % images.length;
-    updateSlider();
-  }
-  function slideTo(i) { sliderIdx = i; updateSlider(); }
+  function slideMove(dir){ sliderIdx = (sliderIdx - dir + images.length) % images.length; updateSlider(); }
+  function slideTo(i){ sliderIdx = i; updateSlider(); }
   setInterval(() => slideMove(-1), 4000);
 
-  // Lightbox
   let lbIdx = 0;
-  function openLightbox(i) {
+  function openLightbox(i){
     lbIdx = i;
     document.getElementById('lightboxImg').src = images[i];
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeLightboxOutside(e) {
-    if(e.target === document.getElementById('lightbox')) closeLightbox();
-  }
-  function lbNav(dir) {
+  function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
+  function closeLightboxOutside(e){ if(e.target === document.getElementById('lightbox')) closeLightbox(); }
+  function lbNav(dir){
     lbIdx = (lbIdx + dir + images.length) % images.length;
     const img = document.getElementById('lightboxImg');
-    img.style.opacity = '0';
-    img.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      img.src = images[lbIdx];
-      img.style.opacity = '1';
-      img.style.transform = 'scale(1)';
-    }, 200);
+    img.style.opacity='0'; img.style.transform='scale(0.95)';
+    setTimeout(()=>{ img.src=images[lbIdx]; img.style.opacity='1'; img.style.transform='scale(1)'; },200);
   }
-  document.getElementById('lightboxImg').style.transition = 'opacity .2s,transform .2s';
-  document.addEventListener('keydown', e => {
-    if(e.key === 'Escape') closeLightbox();
-    if(e.key === 'ArrowRight') lbNav(1);
-    if(e.key === 'ArrowLeft') lbNav(-1);
-  });
+  document.getElementById('lightboxImg').style.transition='opacity .2s,transform .2s';
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') lbNav(1); if(e.key==='ArrowLeft') lbNav(-1); });
 </script>
 </body>
 </html>
