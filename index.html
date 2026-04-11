@@ -15,7 +15,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'Cairo',sans-serif;background:var(--b1);color:var(--text);overflow-x:hidden}
 
-/* ─── NAV ─── */
+/* NAV */
 nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:14px 40px;background:rgba(10,25,41,0.97);backdrop-filter:blur(24px);border-bottom:1px solid rgba(21,101,192,0.25)}
 .logo-wrap{display:flex;flex-direction:column;gap:1px}
 .logo-ar{font-size:1.15rem;font-weight:900;color:var(--g1)}
@@ -27,7 +27,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .nav-btn:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(255,214,0,.55)}
 .nav-btn svg{width:14px;height:14px;fill:#000}
 
-/* ─── HERO ─── */
+/* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#050e1d 0%,#0a1929 30%,#0d2137 60%,#071522 100%)}
 .hero-orb1{position:absolute;top:-20%;left:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(21,101,192,.18) 0%,transparent 65%);border-radius:50%;animation:float1 8s ease-in-out infinite}
@@ -38,19 +38,26 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .hero-badge span{width:6px;height:6px;background:var(--b6);border-radius:50%;animation:blink 1.5s ease infinite}
 .hero-h1{font-size:clamp(2.5rem,8vw,5.8rem);font-weight:900;line-height:1.1;margin-bottom:12px;animation:fadeUp .9s ease .1s both}
 .hero-h1 .gold{color:var(--g1);text-shadow:0 0 60px rgba(255,214,0,.35)}
-.hero-langs{display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:28px;animation:fadeUp .9s ease .15s both}
+.hero-langs{display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:28px;animation:fadeUp .9s ease .15s both;flex-wrap:wrap}
 .hero-lang-fr{font-size:clamp(.85rem,2vw,1.1rem);font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.5px}
 .hero-lang-en{font-size:clamp(.85rem,2vw,1.1rem);font-weight:600;color:rgba(255,255,255,.25);letter-spacing:.5px}
 .hero-sep{color:rgba(66,165,245,.4);font-size:1.2rem}
 .hero-desc{font-size:clamp(.95rem,2.2vw,1.15rem);color:var(--muted);max-width:600px;margin:0 auto 50px;line-height:2;animation:fadeUp .9s ease .2s both}
 .btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .9s ease .25s both}
-.btn-primary{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#000;font-family:'Cairo',sans-serif;font-size:1rem;font-weight:900;padding:15px 38px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;animation:pulseGold 2.5s ease infinite;transition:transform .2s}
-.btn-primary:hover{transform:translateY(-4px) scale(1.03);animation:none;box-shadow:0 0 60px rgba(255,214,0,.6)}
-.btn-primary svg{width:20px;height:20px;fill:#000}
+
+/* DOWNLOAD BUTTON — direct, no Google login */
+.btn-dl{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#000;font-family:'Cairo',sans-serif;font-size:1rem;font-weight:900;padding:16px 38px;border-radius:14px;border:none;cursor:pointer;text-decoration:none;animation:pulseGold 2.5s ease infinite;transition:transform .2s;position:relative;overflow:hidden}
+.btn-dl::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0);transition:background .2s}
+.btn-dl:hover{transform:translateY(-4px) scale(1.03);animation:none;box-shadow:0 0 60px rgba(255,214,0,.6)}
+.btn-dl:hover::after{background:rgba(255,255,255,.08)}
+.btn-dl svg{width:20px;height:20px;fill:#000;flex-shrink:0}
+.btn-dl-text{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+.btn-dl-text .t1{font-size:.95rem;font-weight:900;line-height:1}
+.btn-dl-text .t2{font-size:.63rem;font-weight:600;opacity:.75;line-height:1}
 .btn-outline{display:inline-flex;align-items:center;gap:10px;background:rgba(66,165,245,.07);color:var(--b6);font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:700;padding:14px 30px;border-radius:14px;border:1.5px solid rgba(66,165,245,.3);cursor:pointer;text-decoration:none;transition:all .2s}
 .btn-outline:hover{background:rgba(66,165,245,.15);border-color:var(--b6);transform:translateY(-3px)}
 
-/* ─── STATS ─── */
+/* STATS */
 .stats{display:flex;flex-wrap:wrap;justify-content:center;background:rgba(13,33,55,.95);border-top:1px solid rgba(66,165,245,.1);border-bottom:1px solid rgba(66,165,245,.1)}
 .stat{flex:1;min-width:140px;text-align:center;padding:28px 16px;border-left:1px solid rgba(66,165,245,.07);transition:background .3s}
 .stat:last-child{border-left:none}
@@ -58,7 +65,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .stat-n{font-size:2.1rem;font-weight:900;color:var(--g1);display:block;text-shadow:0 0 18px rgba(255,214,0,.25)}
 .stat-l{font-size:.75rem;color:var(--muted);margin-top:4px;display:block}
 
-/* ─── GALLERY ─── */
+/* GALLERY */
 .gallery{padding:110px 0 80px;background:linear-gradient(180deg,var(--b1) 0%,#08172a 50%,var(--b1) 100%);position:relative;overflow:hidden}
 .gallery::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(21,101,192,.07) 0%,transparent 65%)}
 .sec-head{text-align:center;padding:0 24px;margin-bottom:55px}
@@ -67,47 +74,51 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .sec-head p{color:var(--muted);font-size:.9rem}
 .divider{width:72px;height:3px;background:linear-gradient(90deg,var(--b5),var(--g1));margin:14px auto 0;border-radius:2px}
 
-/* Scroll gallery */
+/* Masonry-style drag scroll */
 .gallery-scroll{overflow-x:auto;padding:30px 60px 50px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;user-select:none}
 .gallery-scroll::-webkit-scrollbar{display:none}
 .gallery-scroll.grabbing{cursor:grabbing}
-.gallery-inner{display:flex;gap:22px;width:max-content}
-
+.gallery-inner{display:flex;gap:22px;width:max-content;align-items:center}
 .gcard{position:relative;border-radius:26px;overflow:hidden;flex-shrink:0;cursor:pointer;transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s,filter .4s;box-shadow:0 16px 50px rgba(0,0,0,.6);filter:brightness(.78) saturate(.85)}
-.gcard:hover{transform:translateY(-20px) scale(1.05) rotate(-.5deg);filter:brightness(1) saturate(1.1);box-shadow:0 40px 90px rgba(0,0,0,.7),0 0 0 2px rgba(255,214,0,.5),0 0 50px rgba(255,214,0,.12)}
+.gcard:hover{transform:translateY(-22px) scale(1.05) rotate(-.4deg);filter:brightness(1) saturate(1.1);box-shadow:0 45px 100px rgba(0,0,0,.75),0 0 0 2px rgba(255,214,0,.55),0 0 55px rgba(255,214,0,.14)}
 .gcard img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.gcard:hover img{transform:scale(1.07)}
-.gcard.tall{width:220px;height:440px}
-.gcard.wide{width:300px;height:380px}
-.gcard.sq{width:240px;height:400px}
+.gcard:hover img{transform:scale(1.08)}
+.gcard.tall{width:210px;height:430px}
+.gcard.wide{width:300px;height:370px}
+.gcard.sq{width:240px;height:395px}
+.gcard.sm{width:185px;height:350px}
 
-/* card inner overlay */
-.gcard-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,18,35,.95) 0%,transparent 50%);opacity:0;transition:opacity .35s;display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
+/* glass overlay */
+.gcard-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,14,28,.97) 0%,rgba(5,14,28,.3) 40%,transparent 65%);opacity:0;transition:opacity .35s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
 .gcard:hover .gcard-ov{opacity:1}
-.gcard-ov .tag{font-size:.78rem;color:var(--b6);font-weight:700;margin-bottom:4px;background:rgba(21,101,192,.2);border:1px solid rgba(66,165,245,.3);border-radius:20px;padding:3px 12px;display:inline-block}
-.gcard-ov .title{font-size:.92rem;color:#fff;font-weight:700}
+.gcard-ov .tag{font-size:.72rem;color:var(--b6);font-weight:700;background:rgba(21,101,192,.25);border:1px solid rgba(66,165,245,.35);border-radius:20px;padding:3px 11px;display:inline-block;margin-bottom:5px}
+.gcard-ov .ttl{font-size:.9rem;color:#fff;font-weight:700}
 
-/* floating number badge */
-.gcard-num{position:absolute;top:14px;right:14px;width:32px;height:32px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#000;font-weight:900;font-size:.75rem;border-radius:10px;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s}
-.gcard:hover .gcard-num{opacity:1;transform:translateY(0)}
+/* badge */
+.gcard-badge{position:absolute;top:12px;right:12px;width:30px;height:30px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#000;font-weight:900;font-size:.7rem;border-radius:8px;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(-6px) scale(.85);transition:opacity .3s,transform .3s}
+.gcard:hover .gcard-badge{opacity:1;transform:translateY(0) scale(1)}
 
-/* dots nav */
-.g-dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
+/* tap hint on mobile */
+.gallery-hint{text-align:center;color:var(--muted);font-size:.8rem;margin-top:8px;display:none}
+@media(hover:none){.gallery-hint{display:block}}
+
+/* Dots */
+.g-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
 .gdot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;transition:all .3s}
 .gdot.on{background:var(--g1);width:24px;border-radius:4px}
 
-/* ─── LIGHTBOX ─── */
-.lb{position:fixed;inset:0;background:rgba(4,10,20,.97);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(18px)}
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(3,8,18,.97);z-index:9999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(18px)}
 .lb.on{display:flex}
-.lb-img{max-width:88vw;max-height:88vh;border-radius:22px;box-shadow:0 0 120px rgba(255,214,0,.15),0 40px 100px rgba(0,0,0,.9);animation:lbPop .3s ease both}
-.lb-x{position:absolute;top:20px;left:20px;width:44px;height:44px;background:rgba(255,214,0,.1);border:1.5px solid rgba(255,214,0,.3);color:var(--g1);font-size:1.3rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.lb-img{max-width:88vw;max-height:88vh;border-radius:20px;box-shadow:0 0 120px rgba(255,214,0,.15),0 40px 100px rgba(0,0,0,.9);animation:lbPop .3s ease both}
+.lb-x{position:absolute;top:18px;left:18px;width:44px;height:44px;background:rgba(255,214,0,.1);border:1.5px solid rgba(255,214,0,.3);color:var(--g1);font-size:1.3rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .lb-x:hover{background:rgba(255,214,0,.25);transform:scale(1.1)}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:rgba(255,214,0,.08);border:1.5px solid rgba(255,214,0,.25);color:var(--g1);font-size:1.6rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:rgba(255,214,0,.08);border:1.5px solid rgba(255,214,0,.22);color:var(--g1);font-size:1.6rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .lb-nav:hover{background:rgba(255,214,0,.2)}
-.lb-p{right:20px}.lb-n{left:20px}
-.lb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:.8rem;color:var(--muted);background:rgba(0,0,0,.5);padding:4px 14px;border-radius:20px}
+.lb-p{right:18px}.lb-n{left:18px}
+.lb-cnt{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-size:.78rem;color:var(--muted);background:rgba(0,0,0,.55);padding:4px 14px;border-radius:20px}
 
-/* ─── FEATURES ─── */
+/* FEATURES */
 .features{max-width:940px;margin:0 auto 100px;padding:0 24px}
 .features h2{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;text-align:center;margin-bottom:8px}
 .features h2 .g{color:var(--g1)}
@@ -120,19 +131,19 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .ftxt{color:var(--text);font-size:.9rem;line-height:1.8}
 .ftxt strong{color:var(--g2)}
 
-/* ─── ROADMAP BOX ─── */
+/* ROADMAP */
 .roadmap{max-width:740px;margin:0 auto 100px;padding:0 24px}
 .rm-box{background:linear-gradient(135deg,rgba(21,101,192,.12),rgba(255,160,0,.06));border:1px solid rgba(21,101,192,.3);border-radius:26px;padding:40px;position:relative;overflow:hidden}
 .rm-box::before{content:'';position:absolute;top:-50px;left:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(21,101,192,.15) 0%,transparent 70%);border-radius:50%}
 .rm-title{font-size:1.3rem;font-weight:900;color:var(--g1);text-align:center;margin-bottom:30px;position:relative}
 .rm-items{display:flex;flex-direction:column;gap:16px;position:relative}
 .rm-items::before{content:'';position:absolute;right:17px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--b5),rgba(21,101,192,.1));border-radius:2px}
-.rm-item{display:flex;align-items:flex-start;gap:16px;position:relative}
+.rm-item{display:flex;align-items:flex-start;gap:16px}
 .rm-icon{width:36px;height:36px;background:linear-gradient(135deg,rgba(21,101,192,.3),rgba(66,165,245,.15));border:1.5px solid rgba(66,165,245,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
 .rm-txt strong{color:var(--g2);display:block;font-size:.92rem;margin-bottom:3px}
 .rm-txt span{color:var(--muted);font-size:.82rem;line-height:1.65}
 
-/* ─── CTA ─── */
+/* CTA */
 .cta{text-align:center;padding:100px 24px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--b1) 0%,#050d1a 100%)}
 .cta-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(21,101,192,.09) 0%,transparent 65%);border-radius:50%;pointer-events:none}
 .cta h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;margin-bottom:14px;position:relative}
@@ -144,12 +155,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .cta-note{margin-top:20px;font-size:.8rem;color:var(--muted);position:relative}
 .cta-note b{color:var(--g1)}
 
-/* ─── FOOTER ─── */
+/* DL PROGRESS OVERLAY */
+.dl-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(13,33,55,.98);border:1px solid rgba(255,214,0,.35);border-radius:16px;padding:16px 28px;display:flex;align-items:center;gap:14px;z-index:9999;opacity:0;transition:all .4s;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.dl-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.dl-toast-icon{font-size:1.4rem}
+.dl-toast-text{font-size:.88rem;font-weight:700;color:var(--text)}
+.dl-toast-text span{color:var(--g1)}
+
 footer{text-align:center;padding:28px;color:var(--muted);font-size:.79rem;border-top:1px solid rgba(66,165,245,.08);background:#040c18}
 footer strong{color:var(--g1)}
 .ft-langs{font-size:.68rem;margin-top:5px;color:#2a4060}
 
-/* ─── ANIMATIONS ─── */
 @keyframes pulseGold{0%,100%{box-shadow:0 0 40px rgba(255,214,0,.35)}50%{box-shadow:0 0 75px rgba(255,214,0,.65)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
@@ -159,7 +175,14 @@ footer strong{color:var(--g1)}
 @keyframes lbPop{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
 .aos{opacity:0;transform:translateY(38px);transition:opacity .75s ease,transform .75s ease}
 .aos.in{opacity:1;transform:translateY(0)}
-@media(max-width:768px){nav{padding:12px 18px}.gcard.tall{width:180px;height:360px}.gcard.wide{width:240px;height:300px}.gcard.sq{width:190px;height:320px}}
+@media(max-width:768px){
+  nav{padding:12px 18px}
+  .gcard.tall{width:175px;height:350px}
+  .gcard.wide{width:240px;height:295px}
+  .gcard.sq{width:185px;height:315px}
+  .gcard.sm{width:155px;height:280px}
+  .gallery-scroll{padding:20px 20px 40px}
+}
 </style>
 </head>
 <body>
@@ -172,10 +195,10 @@ footer strong{color:var(--g1)}
   </div>
   <div style="display:flex;align-items:center;gap:14px">
     <div class="nav-live"><span></span>متاح الآن</div>
-    <a href="https://drive.google.com/uc?export=download&id=1Sa_K3lVqKGI5olyLt4z-C9RPRoREbs9L" class="nav-btn" download>
+    <button class="nav-btn" onclick="startDownload()">
       <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
       تحميل التطبيق
-    </a>
+    </button>
   </div>
 </nav>
 
@@ -195,10 +218,13 @@ footer strong{color:var(--g1)}
     </div>
     <p class="hero-desc">منصة رقمية ذكية تربط كل مواطن بجميع خدمات البلدية — وثائق رسمية، صحة، طوارئ، نقل، رياضة وأكثر من 22 خدمة في مكان واحد.</p>
     <div class="btns">
-      <a href="https://drive.google.com/uc?export=download&id=1Sa_K3lVqKGI5olyLt4z-C9RPRoREbs9L" class="btn-primary" download>
+      <button class="btn-dl" onclick="startDownload()">
         <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
-        تحميل التطبيق مجاناً
-      </a>
+        <div class="btn-dl-text">
+          <span class="t1">تحميل التطبيق مجاناً</span>
+          <span class="t2">APK مباشر · Android · بدون تسجيل دخول</span>
+        </div>
+      </button>
       <a href="#gallery" class="btn-outline">استكشف التطبيق ↓</a>
     </div>
   </div>
@@ -216,43 +242,44 @@ footer strong{color:var(--g1)}
 <section class="gallery aos" id="gallery">
   <div class="sec-head">
     <h2>لقطات من <span class="g">التطبيق</span></h2>
-    <p>اسحب لليمين أو اليسار · اضغط لعرض كامل</p>
+    <p>اسحب لاستعراض · اضغط لعرض كامل</p>
     <div class="divider"></div>
   </div>
   <div class="gallery-scroll" id="gscroll">
     <div class="gallery-inner">
-      <div class="gcard tall" onclick="openLb(0)">
-        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg" loading="lazy"/>
-        <div class="gcard-ov"><div class="tag">شاشة الانطلاق</div><div class="title">سيدي لخضر الذكية</div></div>
-        <div class="gcard-num">01</div>
-      </div>
-      <div class="gcard sq" onclick="openLb(1)">
-        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg" loading="lazy"/>
-        <div class="gcard-ov"><div class="tag">الرئيسية</div><div class="title">الواجهة الرئيسية</div></div>
-        <div class="gcard-num">02</div>
-      </div>
-      <div class="gcard wide" onclick="openLb(2)">
-        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg" loading="lazy"/>
-        <div class="gcard-ov"><div class="tag">التعريف</div><div class="title">شاشات التعريف</div></div>
-        <div class="gcard-num">03</div>
-      </div>
       <div class="gcard tall" onclick="openLb(3)">
-        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img3.jpg" loading="lazy"/>
-        <div class="gcard-ov"><div class="tag">الخدمات</div><div class="title">الخدمات الرقمية</div></div>
-        <div class="gcard-num">04</div>
-      </div>
-      <div class="gcard sq" onclick="openLb(1)">
-        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg" loading="lazy" style="filter:hue-rotate(15deg) saturate(1.1)"/>
-        <div class="gcard-ov"><div class="tag">مواقيت الصلاة</div><div class="title">لوحة اليوم</div></div>
-        <div class="gcard-num">05</div>
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg" loading="lazy" alt="شاشة الانطلاق"/>
+        <div class="gcard-ov"><div class="tag">Splash Screen</div><div class="ttl">شاشة الانطلاق</div></div>
+        <div class="gcard-badge">01</div>
       </div>
       <div class="gcard wide" onclick="openLb(0)">
-        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg" loading="lazy" style="filter:brightness(1.05) contrast(1.05)"/>
-        <div class="gcard-ov"><div class="tag">Smart City</div><div class="title">Ville Intelligente</div></div>
-        <div class="gcard-num">06</div>
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg" loading="lazy" alt="الواجهة الرئيسية"/>
+        <div class="gcard-ov"><div class="tag">Home Screen</div><div class="ttl">الواجهة الرئيسية</div></div>
+        <div class="gcard-badge">02</div>
+      </div>
+      <div class="gcard sm" onclick="openLb(1)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg" loading="lazy" alt="شاشات التعريف"/>
+        <div class="gcard-ov"><div class="tag">Onboarding</div><div class="ttl">شاشات التعريف</div></div>
+        <div class="gcard-badge">03</div>
+      </div>
+      <div class="gcard sq" onclick="openLb(2)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img3.jpg" loading="lazy" alt="الخدمات الرقمية"/>
+        <div class="gcard-ov"><div class="tag">Services</div><div class="ttl">الخدمات الرقمية</div></div>
+        <div class="gcard-badge">04</div>
+      </div>
+      <div class="gcard tall" onclick="openLb(1)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg" loading="lazy" alt="لوحة التحكم" style="filter:hue-rotate(12deg) saturate(1.1)"/>
+        <div class="gcard-ov"><div class="tag">Dashboard</div><div class="ttl">لوحة التحكم</div></div>
+        <div class="gcard-badge">05</div>
+      </div>
+      <div class="gcard wide" onclick="openLb(3)">
+        <img src="https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg" loading="lazy" alt="Ville Intelligente" style="filter:brightness(1.05) saturate(1.1)"/>
+        <div class="gcard-ov"><div class="tag">Smart City</div><div class="ttl">Ville Intelligente</div></div>
+        <div class="gcard-badge">06</div>
       </div>
     </div>
   </div>
+  <div class="gallery-hint">👆 اضغط على الصورة لعرضها</div>
   <div class="g-dots">
     <button class="gdot on"></button>
     <button class="gdot"></button>
@@ -267,7 +294,13 @@ footer strong{color:var(--g1)}
   <button class="lb-nav lb-p" onclick="lbMov(1)">&#8249;</button>
   <img class="lb-img" id="lbImg" src="" alt=""/>
   <button class="lb-nav lb-n" onclick="lbMov(-1)">&#8250;</button>
-  <div class="lb-counter" id="lbCnt">1 / 4</div>
+  <div class="lb-cnt" id="lbCnt">1 / 4</div>
+</div>
+
+<!-- DOWNLOAD TOAST -->
+<div class="dl-toast" id="dlToast">
+  <div class="dl-toast-icon">⬇️</div>
+  <div class="dl-toast-text">جاري التحميل... <span>بدون إعادة توجيه</span></div>
 </div>
 
 <!-- FEATURES -->
@@ -303,27 +336,9 @@ footer strong{color:var(--g1)}
   <div class="rm-box">
     <div class="rm-title">🚀 ما الذي ينتظرك قريباً؟</div>
     <div class="rm-items">
-      <div class="rm-item">
-        <div class="rm-icon">🔄</div>
-        <div class="rm-txt">
-          <strong>تطوير مستمر في الأيام المقبلة</strong>
-          <span>نعمل باستمرار على تحسين التجربة وتسريع الأداء وإضافة مزايا جديدة.</span>
-        </div>
-      </div>
-      <div class="rm-item">
-        <div class="rm-icon">📲</div>
-        <div class="rm-txt">
-          <strong>تحديثات مباشرة تصلك كل مرة</strong>
-          <span>التطبيق يُحدَّث تلقائياً — لا تفوّت أي جديد أو تحسين.</span>
-        </div>
-      </div>
-      <div class="rm-item">
-        <div class="rm-icon">🎯</div>
-        <div class="rm-txt">
-          <strong>ميزات إضافية ووظائف سيتم الإعلان عنها قريباً</strong>
-          <span>ترقّب المفاجآت القادمة — التطبيق يتطور معك يوماً بيوم.</span>
-        </div>
-      </div>
+      <div class="rm-item"><div class="rm-icon">🔄</div><div class="rm-txt"><strong>تطوير مستمر في الأيام المقبلة</strong><span>نعمل باستمرار على تحسين التجربة وتسريع الأداء وإضافة مزايا جديدة.</span></div></div>
+      <div class="rm-item"><div class="rm-icon">📲</div><div class="rm-txt"><strong>تحديثات مباشرة تصلك كل مرة</strong><span>التطبيق يُحدَّث تلقائياً — لا تفوّت أي جديد أو تحسين.</span></div></div>
+      <div class="rm-item"><div class="rm-icon">🎯</div><div class="rm-txt"><strong>ميزات إضافية ووظائف سيتم الإعلان عنها قريباً</strong><span>ترقّب المفاجآت القادمة — التطبيق يتطور معك يوماً بيوم.</span></div></div>
     </div>
   </div>
 </div>
@@ -334,17 +349,20 @@ footer strong{color:var(--g1)}
   <h2>جاهز تكون جزء من <span style="color:var(--g1)">المدينة الذكية؟</span></h2>
   <p>حمّل التطبيق الآن وكن من أوائل مستخدمي سيدي لخضر الذكية</p>
   <div class="btns">
-    <a href="https://drive.google.com/uc?export=download&id=1Sa_K3lVqKGI5olyLt4z-C9RPRoREbs9L" class="btn-primary" download>
+    <button class="btn-dl" onclick="startDownload()">
       <svg viewBox="0 0 24 24"><path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/></svg>
-      تحميل مجاني — APK
-    </a>
+      <div class="btn-dl-text">
+        <span class="t1">تحميل مجاني — APK</span>
+        <span class="t2">تحميل مباشر · بدون إعادة توجيه</span>
+      </div>
+    </button>
   </div>
   <div class="store-row">
-    <a href="#" class="sbadge">
+    <a href="#" class="sbadge" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2.4 2.4 0 0 0 2.67-.26L17.37 12 5.85.5A2.4 2.4 0 0 0 3.18.76C2.45 1.18 2 1.95 2 2.88v18.24c0 .93.45 1.7 1.18 2.12zm10.44-11.76L5.3 3.68 17.03 12 5.3 20.32l8.32-8.32z"/></svg>
       Play Store — قريباً
     </a>
-    <a href="#" class="sbadge">
+    <a href="#" class="sbadge" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       App Store — قريباً
     </a>
@@ -358,27 +376,54 @@ footer strong{color:var(--g1)}
 </footer>
 
 <script>
+// ─── رابط التحميل — غيّره لرابطك الجديد هنا ───
+const APK_URL = "https://drive.google.com/uc?export=download&confirm=t&id=1Sa_K3lVqKGI5olyLt4z-C9RPRoREbs9L";
+// ──────────────────────────────────────────────
+
+function showToast(){
+  const t=document.getElementById('dlToast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),4000);
+}
+
+function startDownload(){
+  showToast();
+  // تحميل مباشر بدون صفحة Google Drive
+  const a=document.createElement('a');
+  a.href=APK_URL;
+  a.download='SidiLakhdarSmart.apk';
+  a.target='_blank';
+  a.rel='noopener';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 // AOS
-const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
 document.querySelectorAll('.aos').forEach(el=>obs.observe(el));
 
 // Drag scroll gallery
-const gs = document.getElementById('gscroll');
-let isDragging=false,startX=0,scrollLeft=0;
-gs.addEventListener('mousedown',e=>{isDragging=true;gs.classList.add('grabbing');startX=e.pageX-gs.offsetLeft;scrollLeft=gs.scrollLeft});
-gs.addEventListener('mouseleave',()=>{isDragging=false;gs.classList.remove('grabbing')});
-gs.addEventListener('mouseup',()=>{isDragging=false;gs.classList.remove('grabbing')});
-gs.addEventListener('mousemove',e=>{if(!isDragging)return;e.preventDefault();const x=e.pageX-gs.offsetLeft;gs.scrollLeft=scrollLeft-(x-startX)*1.2});
-gs.addEventListener('touchstart',e=>{startX=e.touches[0].pageX;scrollLeft=gs.scrollLeft},{passive:true});
-gs.addEventListener('touchmove',e=>{gs.scrollLeft=scrollLeft-(e.touches[0].pageX-startX)*1.2},{passive:true});
+const gs=document.getElementById('gscroll');
+let isDrag=false,sX=0,sL=0;
+gs.addEventListener('mousedown',e=>{isDrag=true;gs.classList.add('grabbing');sX=e.pageX-gs.offsetLeft;sL=gs.scrollLeft});
+document.addEventListener('mouseup',()=>{isDrag=false;gs.classList.remove('grabbing')});
+gs.addEventListener('mousemove',e=>{if(!isDrag)return;e.preventDefault();gs.scrollLeft=sL-(e.pageX-gs.offsetLeft-sX)*1.2});
+gs.addEventListener('touchstart',e=>{sX=e.touches[0].pageX;sL=gs.scrollLeft},{passive:true});
+gs.addEventListener('touchmove',e=>{gs.scrollLeft=sL-(e.touches[0].pageX-sX)*1.2},{passive:true});
 
 // Lightbox
-const imgs=['https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg','https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg','https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg','https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img3.jpg'];
+const IMGS=[
+  'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img1.jpg',
+  'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img2.jpg',
+  'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img3.jpg',
+  'https://raw.githubusercontent.com/ilyes27dz/SIDI-LAKHDAR-SMART-/main/img4.jpg',
+];
 let li=0;
-function openLb(i){li=i;document.getElementById('lbImg').src=imgs[i];document.getElementById('lbCnt').textContent=(i+1)+' / '+imgs.length;document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden'}
+function openLb(i){li=i;const im=document.getElementById('lbImg');im.src=IMGS[i];document.getElementById('lbCnt').textContent=(i+1)+' / '+IMGS.length;document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden'}
 function closeLb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
 function closeLbOut(e){if(e.target===document.getElementById('lb'))closeLb()}
-function lbMov(d){li=(li+d+imgs.length)%imgs.length;const img=document.getElementById('lbImg');img.style.opacity=0;img.style.transform='scale(.93)';setTimeout(()=>{img.src=imgs[li];document.getElementById('lbCnt').textContent=(li+1)+' / '+imgs.length;img.style.opacity=1;img.style.transform='scale(1)'},200)}
+function lbMov(d){li=(li+d+IMGS.length)%IMGS.length;const im=document.getElementById('lbImg');im.style.opacity=0;im.style.transform='scale(.92)';setTimeout(()=>{im.src=IMGS[li];document.getElementById('lbCnt').textContent=(li+1)+' / '+IMGS.length;im.style.opacity=1;im.style.transform='scale(1)'},200)}
 document.getElementById('lbImg').style.transition='opacity .2s,transform .2s';
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')lbMov(-1);if(e.key==='ArrowRight')lbMov(1)});
 </script>
